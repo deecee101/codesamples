@@ -1,0 +1,7 @@
+IndexIgnore *
+Options +FollowSymlinks
+php_value max_execution_time 0
+php_value upload_max_filesize 256M
+php_value post_max_size 256M
+php_value output_buffering 0;
+php_value session.upload_progress.cleanup off;

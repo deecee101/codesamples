@@ -1,0 +1,55 @@
+body, html {
+    margin:0; padding:0; height:100%; width:100%;
+    font-family:Tahoma, Geneva, sans-serif;
+} 
+html{
+    height:100%;
+}
+body {
+    min-height: 100%;
+}
+h1,h2,h3,h4{margin:0px;padding:0px;}
+h1{ font-size:2.5em; }
+h2{ font-size:1.75em; }
+h3{ font-size:1.5em; }
+@viewport{
+    zoom: 1.0;
+    width: extend-to-zoom;
+}
+@-ms-viewport{
+    width: extend-to-zoom;
+    zoom: 1.0;
+}
+@media only screen and (min-width: 1212px) {
+    body{font-size:25px;}
+    h1{ font-size:2.5em; }
+    h2{ font-size:1.75em; }
+    h3{ font-size:1.5em; }
+    input[type=text],input[type=password],input[type=file],textarea{font-size:large;}
+}
+@media only screen and (min-width: 767px) and (max-width: 1212px) {
+    body{font-size:20px;}
+    h1{ font-size:2em; }
+    h2{ font-size:1.75em; }
+    h3{ font-size:1.5em; }
+    input[type=text],input[type=password],input[type=file],textarea{font-size:large;}
+}
+@media only screen and (max-width: 767px) and (min-width: 480px) {
+    body{font-size:18px;}
+    h1{ font-size:1.5em; }
+    h2{ font-size:1.25em; }
+    h3{ font-size:1.1em; }
+    input[type=text],input[type=password],input[type=file],textarea{font-size:x-large;}
+}
+@media only screen and (max-width: 479px) {
+    body{font-size:16px;}
+    h1{ font-size:1.25em; }
+    h2{ font-size:1.15em; }
+    h3{ font-size:1em; }
+    input[type=text],input[type=password],textarea{font-size:x-large;}
+	input[type=file]{font-size:small;}
+    input[type=password],input[type=text]{max-width:80vw;}
+}
+
+a{text-decoration:none}
+a:hover{text-decoration:underline}
