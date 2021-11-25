@@ -20,7 +20,7 @@ echo $name.'<br>';
 echo $docurl.'<br>'; exit;
 */
 //shell_exec("ffmpeg -i ./videos/video1.mp4 -ss 00:00:03 -frames:v 1 foobar.jpeg");
-
+@mkdir($spath.'thumbs/');
 $d = shell_exec("ffprobe -show_entries format=duration ./videos/video1.mp4");
 $d = preg_replace( "#\n|\r|\r\n#", '', $d );
 $duration = str_replace('[FORMAT]duration=','',$d);
