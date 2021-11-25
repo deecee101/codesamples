@@ -46,7 +46,7 @@ foreach($tables as $ke => $val){
 				 		$sql .= $k." ".$v.", ";
 				 	}
 				    //echo '] ';
-				    $sql = str_replace('database','daytubais', $sql);
+				    $sql = str_replace('database','_db', $sql);
 				    $sql = rtrim($sql, ", ");
 				    $sql .= ")";
 				//echo $sql."<br>\n";
