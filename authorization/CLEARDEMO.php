@@ -33,7 +33,7 @@ $mydQuery = "DROP DATABASE ".$sqldbname;
 	catch(PDOException $e){
 	     exit($e->getMessage());
 	}
-unlink($spath.'.htaccess');
+if(is_file($spath.'.htaccess')){unlink($spath.'.htaccess');}
 copy($spath.'DEMO.htaccess',$spath.'.htaccess');
 
 if(is_file($servroot.'auth/.htpasswd')){unlink($servroot.'auth/.htpasswd'); rmdir($servroot.'auth');}

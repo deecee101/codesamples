@@ -31,7 +31,11 @@ if(isset($_GET['login']) || isset($_GET['logdin'])){
         header('location:'.$hpath.'clear/'); exit;
     }
     if(isset($_GET['logdin'])){
-
+        if(validate($_GET['logdin'], 'loose') == false){$err['flag']='something was wrong with the token';};
+        if($err['flag'] != NULL){
+            logerror($err['flag']);
+            header('location:'.$hpath.'clear/'); exit;
+        }
         $myQuery = "SELECT users.*, visitors.* FROM users,visitors WHERE users.id = '{$_GET['uid']}' AND visitors.token = '{$_GET['logdin']}' and users.id = visitors.userid";
         logerror($myQuery);
         try{
