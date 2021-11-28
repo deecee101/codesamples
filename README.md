@@ -13,7 +13,7 @@ it is best to use a similar setup, or modify the code as needed.
 	A demo of a simple background slideshow that dynamically loads and fades through images<br>
 
 3) Database<br>
-	Three demos of different storage management methods. Each example utilizes a Create, Read, Update, & Delete routine
+	Three demos of different storage management methods. Each example utilizes a Create, Read, Update, & Delete routine.<br>
 	Each demo loads a list of videos, and generates a set of forms to edit information attributing to each video<br>
 	a) indexedDB - this is client side storage<br>
 	b) mySQL - the web standard. It is necessary to edit the mySQL_AUTH.php file (in the root directory) to use your own mySQL root credentials<br>
@@ -65,5 +65,5 @@ it is best to use a similar setup, or modify the code as needed.
 	Each is stored in the database unless they are deleted by the user.<br>
 
 16) Web Worker<br>
-	This is a demo of a process which would normally interfere with web page interaction. It is a dynamic color fade for a background layer and a text layer
+	This is a demo of a process which would normally interfere with web page interaction. It is a dynamic color fade for a background layer and a text layer.<br>
 	Since the color fade processes are done with web workers, the computations are in te separate thread it would not effect anything the main web page would be doing.<br>
