@@ -5,14 +5,14 @@ These demos were built on a windows machine using xampp, so in order to run them
 
 it is best to use a similar setup, or modify the code as needed.
 
-1) Authorization
+1) Authorization<br>
 	This is a demo of authorization with persistence. The application uses apache authentication,
 	a mySQL database, and indexedDB. There is a token stored in indexedDB for the user so revisiting
 	the page does not require entering in credentials again (if you save the apache authentication, or remove it from htaccess)
 	 until another browser logs in to replace the current token.
 
 
-2) Background Slideshow
+2) Background Slideshow<br>
 	A demo of a simple background slideshow that dynamically loads and fades through images
 
 
