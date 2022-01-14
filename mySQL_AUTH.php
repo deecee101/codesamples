@@ -1,6 +1,6 @@
 <?php 
 //ENTER THE mySQL Authorizations here
 $host="localhost"; 
-$admin="root"; 
-$admin_password='$w0rdp4ss';
+$admin="***YOUR USERNAME****"; 
+$admin_password='****YOUR PASSWORD****';
 ?>
