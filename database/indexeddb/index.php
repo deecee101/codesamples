@@ -37,7 +37,7 @@ there are functions to <br>
 <strong style="color:red" >the responses are listed in the browser console.</strong></span>
 <button onclick="readObj('videos')" >read objectstore</button> <button onclick="listObjStores()" >list objectstores</button> <button onclick="clearObjStore('videos')" >empty table</button> <button onclick="deletedb()" >delete db</button><br>
 <br>
-<div style="display:block;width:100%" id="querydiv" >
+<div style="display:block;width:95%;padding:5px;border:dotted thin gray" id="querydiv" >
 <input type="checkbox" id="table" name="table" value="videos" disabled checked />
 <label for="table"> videos</label><br>
 <form id="videoChoiceForm" name="videoChoiceForm" style="display:block;width:100%"  ></form>

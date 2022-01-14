@@ -109,7 +109,7 @@ foreach($objects as $file => $object){
 	$myQuery = "SELECT * FROM videos WHERE url = ".$db->quote(str_replace($servroot, '', $file));
 	try{
 	     $result = $db->query($myQuery)->fetch(PDO::FETCH_ASSOC);
-	    if($result['id'] == NULL || $result['id'] == ""){
+	    if($result == false || $result['id'] == NULL || $result['id'] == ""){
 	         
 	     }else{
 	     	$i++;
@@ -299,6 +299,7 @@ foreach($itms as $ke => $val){ ?>
 	<DIV STYLE="display:inline-block;margin:5px" >title:<BR /><input type="text" name="title" id="title" value="<?php echo $val['title']; ?>" size="50" onchange="updatedb(this)"  data-tbl="videos" data-itmid = "<?php echo $val['id']; ?>" ></DIV><br>
 	<DIV STYLE="display:inline-block;margin:5px" >description:<br><textarea name="description" id="description" cols="40" rows="10" onchange="updatedb(this)"  data-tbl="videos" data-itmid = "<?php echo $val['id']; ?>" ><?php echo $val['description']; ?></textarea></DIV>
 <INPUT TYPE="hidden" NAME="axn" ID="axn" VALUE="edititm" >
+<button  >update</button>
 <button onclick="deleteitm('<?php echo $val['id']; ?>')" >delete</button>
 </FORM>
 <?php }
@@ -322,6 +323,7 @@ echo '</div>';
 				console.log(response4);
 			}else{
 				console.log(response4.error);
+				alert(response4.error);
 			}
 		});
 	}

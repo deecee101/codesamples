@@ -19,8 +19,9 @@ echo $fname.'<br>';
 echo $name.'<br>';
 echo $docurl.'<br>'; exit;
 */
-//shell_exec("ffmpeg -i ./videos/video1.mp4 -ss 00:00:03 -frames:v 1 foobar.jpeg");
-@mkdir($spath.'thumbs/');
+@mkdir('thumbs');
+//shell_exec("ffmpeg -i ./videos/video1.mp4 -ss 00:00:03 -frames:v 1 foobar.jpeg"); exit;
+
 $d = shell_exec("ffprobe -show_entries format=duration ./videos/video1.mp4");
 $d = preg_replace( "#\n|\r|\r\n#", '', $d );
 $duration = str_replace('[FORMAT]duration=','',$d);
@@ -29,7 +30,7 @@ $divided = intval($duration)/5; //exit($divided);
 shell_exec("ffmpeg -i ./videos/video1.mp4 -vf fps=1/".$divided." -s 640x360 -f image2 ./thumbs/screenshot-%03d.jpg");
 
 ?>
-<html><head><title></title>
+<html><head><title>FFMPEG DEMO</title>
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
 </head>
 <body>

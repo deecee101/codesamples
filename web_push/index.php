@@ -64,7 +64,7 @@ if(isset($_POST['axn']) && $_POST['axn'] != NULL){
 			$myQuery = "SELECT * FROM subscribers WHERE endpoint = ".$db->quote($_POST['endpoint']);
 			try{
 			    $result = $db->query($myQuery)->fetch(PDO::FETCH_ASSOC);
-			    if($result['id'] == NULL || $result['id'] == ""){
+			    if($result == false || $result['id'] == NULL || $result['id'] == ""){
 					$my_query = "REPLACE INTO subscribers (id,endpoint, p256dh, auth) VALUES (".$_POST['uid'].",".$db->quote($_POST['endpoint']).", ".$db->quote($_POST['key']).", ".$db->quote($_POST['token'])."); ";
 					    //echo $my_query.'<BR><BR>';
 					    try {
@@ -95,7 +95,7 @@ if(isset($_POST['axn']) && $_POST['axn'] != NULL){
 			break;
 		case "unsubscribe":
 			$err['flag'] = NULL;
-			if(validate($_POST['endpoint'], 'fulldsc') == false){$err['flag']='the endpoint was bad. please try again';};
+			if(validate($_POST['endpoint'], 'loose') == false){$err['flag']='the endpoint was bad. please try again';};
 			if($err['flag'] != NULL){
 				echo '{"status":"error","error":"'.$err['flag'].'"}';  exit;
 			}
@@ -139,7 +139,7 @@ if(isset($_POST['axn']) && $_POST['axn'] != NULL){
 $myQuery = "SELECT browser_key,server_key,subject FROM apis";
 try{
      $result = $db->query($myQuery)->fetch(PDO::FETCH_ASSOC);
-    if($result['browser_key'] == NULL || $result['server_key'] == NULL || $result['subject'] == NULL ){
+    if($result == false || $result['browser_key'] == NULL || $result['server_key'] == NULL || $result['subject'] == NULL ){
 		?>
 		<html><head><title>Codesamples Push Notifications</title>
 			<link rel="stylesheet" type="text/css" href="<?=$hpath; ?>css.css">
@@ -160,12 +160,16 @@ try{
 		   exit;
      }else{
          $apis = $result;
+         $_SESSION['apis']['push'] = $result;
      }
 }
 catch(PDOException $e){
      echo '{"status":"error","error":"'.$e->getMessage().'"}';  exit;
      ?><SCRIPT>alert('<?php echo $e->getMessage(); ?>');</SCRIPT><?php  exit;
 }
+$aspkey = $apis['browser_key'];
+$pkey = $apis['server_key'];
+
 ?><html><head><title>Push Notification Test</title>
 	<link rel="stylesheet" type="text/css" href="<?=$hpath; ?>css.css">
 	<link rel="stylesheet" type="text/css" href="<?=$hpath; ?>ui/buttons.css">

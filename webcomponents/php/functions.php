@@ -29,4 +29,15 @@ function validate($var2filter, $regex){
     }
 }
 $err;
+
+function makehash($len=0){
+	$char = "0123456789abcdefghijklmnopqrstuvwxyz";
+	$ulen = mt_rand(5, 10);
+	if($len != 0){$ulen = $len;}
+	$hash = '';
+	for ($i = 1; $i <= $ulen; $i++) {
+		$hash .= substr($char, mt_rand(0, strlen($char)), 1);
+	}
+	return $hash;
+}
 ?>

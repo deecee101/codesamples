@@ -19,6 +19,7 @@ echo $fname.'<br>';
 echo $name.'<br>';
 echo $docurl.'<br>'; exit;*/
 include_once($spath.'php/functions.php');
+
 try{
     $db = new PDO('sqlite:'.$spath.'DB.sqlite');
 }
@@ -197,8 +198,6 @@ switch($_GET['axn']){
 <head>
 	<meta charset="utf-8">
 	<title>reminders</title>
-	<meta name="description" content="<?php echo $_SESSION['site_data']['description']; ?>">
-	<meta name="keywords" content="<?php echo $keywords; ?>">	
 
 	<!-- Mobile -->
 	<meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">

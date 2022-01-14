@@ -96,8 +96,8 @@ function is_image($img_name){
 		$err['flag'] = 'there is something wrong with one of your file sizes -- it is 0 bytes?'; return false;
 	}
 	//if the file size is larger than 5mb - throw an error and go to prev document
-	if (filesize($img_name) > 10000000){
-		$err['flag'] = 'there is something wrong with one of your file sizes -- it is over 10 megabytes?'; return false;
+	if (filesize($img_name) > 2000000){
+		$err['flag'] = 'there is something wrong with one of your file sizes -- it is over 2 megabytes?'; return false;
 	}
 	//if the file is not a jpeg - throw an error and go to prev document
 	
@@ -141,8 +141,8 @@ function img_upld($img_name, $img_location, $w, $h, $rename){
 		$err['flag'] = 'there is something wrong with one of your file sizes -- it\'s 0 bytes?'; return false;
 	}
 	//if the file size is larger than 5mb - throw an error and go to prev document
-	if ($_FILES[$img_name]['size'] > 10000000){
-		$err['flag'] = 'there is something wrong with one of your file sizes -- it\'s over 10 megabytes?'; return false;
+	if ($_FILES[$img_name]['size'] > 2000000){
+		$err['flag'] = 'there is something wrong with one of your file sizes -- it\'s over 2 megabytes?'; return false;
 	}
 	//if the file is not a jpeg - throw an error and go to prev document
 	$allowedmimes = array ("image/pjpeg", "image/jpg", "image/pjpg", "image/jpeg","image/png", "video/flv", "image/gif");
@@ -157,7 +157,7 @@ function img_upld($img_name, $img_location, $w, $h, $rename){
 	if($w==0 && $h==0){$prefix='';}
 	if($img_err == false){
 		if (!move_uploaded_file($_FILES[$img_name]['tmp_name'], $img_location.($prefix.$_FILES[$img_name]['name']))){
-			$err['flag'] = "The files could not be moved ".$img_location.(str_replace(" ", "_" ,$_FILES[$img_name]['name']));
+			$err['flag'] = "The files could not be moved ";
 			return false;
 		}else{
 			//createthumb($img_location."_".$_FILES[$img_name]['name'],$img_location.$_FILES[$img_name]['name'],$w,$h);	

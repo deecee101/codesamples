@@ -23,6 +23,23 @@ $sitename = preg_replace('#\W+#', ' ',$_SERVER['HTTP_HOST']);
 include_once($spath."db.php");
 include_once($spath."php/functions.php");
 
+$myQuery = "SELECT browser_key,server_key,subject FROM apis";
+
+
+try{
+     $result = $db->query($myQuery)->fetch(PDO::FETCH_ASSOC);
+    if($result == false || $result['browser_key'] == NULL || $result['server_key'] == NULL || $result['subject'] == NULL ){
+           exit('no push credentials');
+     }else{
+         $apis = $result;
+         $_SESSION['apis']['push'] = $result;
+     }
+}
+catch(PDOException $e){
+     echo '{"status":"error","error":"'.$e->getMessage().'"}';  exit;
+     ?><SCRIPT>alert('<?php echo $e->getMessage(); ?>');</SCRIPT><?php  exit;
+}
+
 require $spath. 'vendor/autoload.php';
 use Minishlink\WebPush\WebPush;
 use Minishlink\WebPush\Subscription;
@@ -35,10 +52,11 @@ if(isset($_POST['axn'])){
         case "uplimg":
             $upldir = $spath.'imgs';
             @mkdir($upldir);
+            $err = array('flag'=>'');
             if(count($_FILES) > 0){
                 $addedfile = img_upld('file', $upldir.'/', 250, 250, true);;
                 if($addedfile == false){
-                    echo '{"status":"error","function":"upload notification image","file":"'.$upldir.'","error":"upload error"}';
+                    echo '{"status":"error","function":"upload notification image","file":"'.$upldir.'","error":"upload error. '.$err['flag'].'"}';
                     exit;
                 }else{
                     $f = str_replace($servroot, $hostroot, $addedfile);

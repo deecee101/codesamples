@@ -2,6 +2,7 @@
 include_once($spath.'php/functions.php');
 include_once($servroot.'mySQL_AUTH.php');
 
+
 $sqldbname = 'codesamples';
 $idxdbname = 'codesamples';
 $_SESSION['dbname'] = $sqldbname;
@@ -87,7 +88,7 @@ if($_SESSION['no_auth_tables'] == true){
     $myQuery = "SELECT * FROM users WHERE uname = 'default'";
     try{
         $result = $db->query($myQuery)->fetch(PDO::FETCH_ASSOC);
-        if($result['id'] == NULL || $result['id'] == ""){
+        if($result == false || $result['id'] == NULL || $result['id'] == ""){
             $my_query = "REPLACE INTO users (uname,pword,pinpass,avatar,description,email,access,sms,role) VALUES ('default','".crypt_apr1_md5('default','s4lt')."','".crypt_apr1_md5('default','s4lt')."','imgs/user.png','','codemonkey@".$_SERVER['HTTP_HOST']."','xxx','8005551234','user'); ";
             //logerror($my_query);
             try {
@@ -99,12 +100,16 @@ if($_SESSION['no_auth_tables'] == true){
                 }
             include_once($spath.'php/htaccess.php');
             @mkdir($servroot.'auth/');
+            $handle = @fopen($servroot.'auth/.htpasswd', "w");
+            if ($handle) {
+                fclose($handle);
+            }     //exit($servroot.'auth/.htpasswd');   
             $ht = new htaccess();
-            $ht->setFPasswd($servroot.'auth/.htpasswd');
+            $ht->setFPasswd($servroot.'auth/.htpasswd'); //exit;
             ///$ht->setFHtaccess($spath."/.htaccess");
             $ht->addUser('default','default');
 
-            $str=file_get_contents('.htaccess');
+            $str=file_get_contents('DEMO.htaccess');
             $str=str_replace('# ', '',$str);
             $str=str_replace('*****',$servroot.'auth/.htpasswd',$str);
             file_put_contents('.htaccess', $str); 
