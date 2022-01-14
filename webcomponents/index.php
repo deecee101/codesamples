@@ -29,7 +29,6 @@ catch(PDOException $e){
 $_SESSION['firstrun'] = false; //is this the first run?
 $_SESSION['member'] = false; //is this a member user?
 
-if(isset($_SERVER['HTTP_HOST'])){$dbnm = preg_replace('#\W+#', '', $_SERVER['HTTP_HOST']).'_logintestone';}
 $tables = array();
 $tables['reminders'] = array('id' => 'INTEGER PRIMARY KEY AUTOINCREMENT', 'listname' => 'TEXT', 'description' => 'TEXT', 'timedate' => 'TEXT','active' => 'TEXT');
 foreach($tables as $ke => $val){
