@@ -249,7 +249,6 @@ input:checked + .slider:before {
 	?>
 	<div style="font-size: small;display:block;width:100%" >visit this page in a browser, or on a mobile device to subscribe to push notifications<BR>
 	<a href="<?=$hpath; ?>sendpush/" class="button button-inverse button-pill button-small" >CLICK HERE</a> to visit the page to SEND a push notification<br>
-	<br><a href="<?=$hpath; ?>dbmgr.php" class="button button-inverse button-pill button-small" >CLICK HERE</a> to review the database, login is <strong style="color:red" >admin</strong><br>
 
 	</div>
 	subscribe to push notifications in this browser :<br>
@@ -257,7 +256,8 @@ input:checked + .slider:before {
   <input type="checkbox" id="notifications_susbcription_toggle_checkbox">
   <span class="slider round"></span>
 </label><br>
-<span id="notifications_susbcription_status_label" ></span>
+<span id="notifications_susbcription_status_label" ></span><BR><BR>
+
 	<script type="text/javascript" src="./js/push.js"></script>
 <script type="text/javascript">
 if ('serviceWorker' in navigator && 'PushManager' in window) {
