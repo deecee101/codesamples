@@ -18,8 +18,8 @@ echo $hpath;
 echo $fname.'<br>';
 echo $name.'<br>';
 echo $docurl.'<br>'; exit;*/ 
-$aspkey = 'BJ4ikwGGbpdwyULMc-sR8fFbtWcwklgybKKlrhN9_kffqLYI3gn-O-f0jkA1W5RHWnOsEyvJ5GtBsoZlJIpXx2o';
-$pkey = '5qSKL_0Zt3gyWcx3qwSC852QP8V540fAjUXsAR8W4i8';
+$aspkey = '00000';
+$pkey = '00000';
  include_once('db.php');
 
 
