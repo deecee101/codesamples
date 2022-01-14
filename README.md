@@ -1,5 +1,6 @@
 # codesamples
 samples of various web development tools and techniques<br>
+<A href="https://codesamples.dart.gallery" target="_blank">View These Deomos Online</A><br>
 These demos were built on a windows machine using xampp, so in order to run them, 
 it is best to use a similar setup, or modify the code as needed.
 
